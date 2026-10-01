@@ -91,6 +91,12 @@ The MCP is read-mostly. `executeAsset` is the only tool that changes anything: i
 
 These skills do not bypass Less authentication, authorization, or permission checks.
 
+## License
+
+The materials in this repository (skill text, manifests, and configuration) are licensed under the Apache License, Version 2.0. See `LICENSE`.
+
+The license applies only to the materials in this repository. It does not grant rights to the Less product or hosted service, its APIs, customer data, or Less trademarks and branding.
+
 ## Layout
 
 ```

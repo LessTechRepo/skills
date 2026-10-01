@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "description": "Explore your Less workspace, answer data questions, trace lineage, and diagnose or refresh pipelines.",
   "author": {
-    "name": "Less"
+    "name": "Less",
+    "url": "https://www.less.tech/"
   },
+  "homepage": "https://www.less.tech/",
+  "license": "Apache-2.0",
   "keywords": ["less", "data", "pipelines", "lineage", "analytics"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
@@ -15,11 +18,15 @@
     "developerName": "Less",
     "category": "Productivity",
     "capabilities": ["Interactive", "Write"],
+    "websiteURL": "https://www.less.tech/",
+    "privacyPolicyURL": "https://www.less.tech/privacy-policy",
     "defaultPrompt": [
       "What tables in my workspace hold order data?",
       "What feeds this model, and what breaks if I change it?",
       "What failed in the last 7 days, and why?"
     ],
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
     "screenshots": []
   }
 }

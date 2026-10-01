@@ -1,7 +1,7 @@
 ---
-
-## name: less-workspace
-description: Explore and operate a Less data workspace through the Less MCP server. Use to find sources, models, tables, orchestrations, and destinations; answer data questions with aggregate SQL over verified tables; understand how something is built (lineage, model pipelines, where a metric is computed) and what it affects; check pipeline health, diagnose failed jobs from logs, review schedules; and, only when explicitly asked, run or refresh an asset.
+name: less-workspace
+description: "Explore and operate a Less data workspace through the Less MCP server. Use to find sources, models, tables, orchestrations, and destinations; answer data questions with aggregate SQL over verified tables; understand how something is built (lineage, model pipelines, where a metric is computed) and what it affects; check pipeline health, diagnose failed jobs from logs, review schedules; and, only when explicitly asked, run or refresh an asset."
+---
 
 # Less Workspace
 

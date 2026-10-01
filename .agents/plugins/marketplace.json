@@ -1,0 +1,20 @@
+{
+  "name": "less",
+  "interface": {
+    "displayName": "Less"
+  },
+  "plugins": [
+    {
+      "name": "less",
+      "source": {
+        "source": "local",
+        "path": "./less"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

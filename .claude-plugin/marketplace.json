@@ -1,0 +1,14 @@
+{
+  "name": "less",
+  "description": "Marketplace for Less plugins that let AI agents explore a Less workspace, answer data questions, inspect pipelines, and check job health.",
+  "owner": {
+    "name": "Less"
+  },
+  "plugins": [
+    {
+      "name": "less",
+      "source": "./less",
+      "description": "Explore your Less workspace, answer data questions, trace lineage, and diagnose or refresh pipelines."
+    }
+  ]
+}

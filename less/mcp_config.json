@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "less": {
+      "serverUrl": "https://<your-less-host>/api/mcp"
+    }
+  }
+}

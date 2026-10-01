@@ -1,0 +1,6 @@
+{
+  "less": {
+    "type": "http",
+    "url": "https://<your-less-host>/api/mcp"
+  }
+}

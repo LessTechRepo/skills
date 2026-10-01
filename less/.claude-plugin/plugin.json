@@ -1,0 +1,8 @@
+{
+  "name": "less",
+  "description": "Explore your Less workspace, answer data questions, trace lineage, and diagnose or refresh pipelines.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Less"
+  }
+}

@@ -8,7 +8,13 @@
   },
   "homepage": "https://www.less.tech/",
   "license": "Apache-2.0",
-  "keywords": ["less", "data", "pipelines", "lineage", "analytics"],
+  "keywords": [
+    "less",
+    "data",
+    "pipelines",
+    "lineage",
+    "analytics"
+  ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
@@ -17,7 +23,10 @@
     "longDescription": "Connect an agent to your Less workspace. Find sources, models, and tables; answer data questions with aggregate SQL; trace upstream provenance and downstream impact; and investigate or refresh pipeline runs.",
     "developerName": "Less",
     "category": "Productivity",
-    "capabilities": ["Interactive", "Write"],
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
     "websiteURL": "https://www.less.tech/",
     "privacyPolicyURL": "https://www.less.tech/privacy-policy",
     "defaultPrompt": [
@@ -27,6 +36,7 @@
     ],
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/icon.png",
-    "screenshots": []
+    "screenshots": [],
+    "termsOfServiceURL": "https://www.less.tech/terms-of-use"
   }
 }

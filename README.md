@@ -48,10 +48,12 @@ Skills-only installs do not configure the MCP server; add it to your client your
 The plugin connects to the Less MCP server over HTTP:
 
 ```
-https://<your-less-host>/api/mcp
+https://app.less.tech/api/mcp
 ```
 
-Replace `<your-less-host>` with your Less app domain in `less/.mcp.json` (Codex, Claude Code, Claude Desktop). Re-apply the edit after upgrading the plugin, since an upgrade replaces the bundled file.
+`app.less.tech` is the default Less workspace host. If your workspace uses a different host, replace it in `less/.mcp.json` (Codex, Claude Code, Claude Desktop) or in your user-level MCP config. Re-apply the edit after upgrading the plugin, since an upgrade replaces the bundled file.
+
+See the [Less documentation](https://docs.less.tech) for more about the platform and its [Terms of Use](https://www.less.tech/terms-of-use).
 
 Every call runs as the signed-in user and is subject to that user's workspace permissions. Tools only see assets the user may read, and `executeAsset` only runs assets the user may execute. Authentication is handled by your client's MCP connection; this repository does not contain or issue tokens.
 

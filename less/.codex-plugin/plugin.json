@@ -1,7 +1,7 @@
 {
   "name": "less",
-  "version": "0.1.0",
-  "description": "Explore your Less workspace, answer data questions, trace lineage, and diagnose or refresh pipelines.",
+  "version": "0.2.0",
+  "description": "Explore your Less workspace, answer data questions, trace lineage, diagnose or refresh pipelines, and write custom Python scripts.",
   "author": {
     "name": "Less",
     "url": "https://www.less.tech/"
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Less",
     "shortDescription": "Explore data, trace lineage, and check pipeline health",
-    "longDescription": "Connect an agent to your Less workspace. Find sources, models, and tables; answer data questions with aggregate SQL; trace upstream provenance and downstream impact; and investigate or refresh pipeline runs.",
+    "longDescription": "Connect an agent to your Less workspace. Find sources, models, and tables; answer data questions with aggregate SQL; trace upstream provenance and downstream impact; investigate or refresh pipeline runs; and write, test, and deploy custom Python scripts.",
     "developerName": "Less",
     "category": "Productivity",
     "capabilities": [

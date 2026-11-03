@@ -1,6 +1,6 @@
 # Less Skills
 
-This repository packages the `less` plugin for Codex, Claude Code, and Claude Desktop. It adds an agent skill on top of the Less MCP server so agents know *when and how* to combine the server's tools.
+This repository packages the `less` plugin for Codex, Claude Code, and Claude Desktop. It adds agent skills on top of the Less MCP server so agents know *when and how* to combine the server's tools, and how to write custom Python scripts on Less.
 
 ## Features
 
@@ -8,6 +8,7 @@ This repository packages the `less` plugin for Codex, Claude Code, and Claude De
 - **Analyze**: Answer data questions with aggregate SQL over verified tables.
 - **Understand pipelines**: Trace upstream provenance and downstream impact, walk a model step by step, and find where a metric is computed.
 - **Operate**: Check job health, diagnose failures from logs, review schedules, and refresh an asset when you explicitly ask.
+- **Write Python scripts**: Write, test, and deploy custom Python scripts that read and write Less tables and call external APIs, using the `less-sdk` package.
 
 
 
@@ -59,7 +60,7 @@ Every call runs as the signed-in user and is subject to that user's workspace pe
 
 ## Usage
 
-The plugin contains one skill, `less-workspace`, covering discovery, analysis, pipelines, and operations. Agents select it automatically. Example prompts:
+The plugin contains two skills: `less-workspace`, covering discovery, analysis, pipelines, and operations, and `less-python-sdk`, covering custom Python scripts. Agents select them automatically. Example prompts:
 
 ```
 What tables in my workspace hold monthly order history?
@@ -85,7 +86,11 @@ What failed in the last 7 days, and why?
 Refresh the orders source.
 ```
 
-Invoke it explicitly with `/less:less-workspace <request>` in Claude Code, or `$less:less-workspace <request>` in Codex.
+```
+Write a Less Python script that pulls orders from our billing API into a table.
+```
+
+Invoke a skill explicitly with `/less:less-workspace <request>` in Claude Code, or `$less:less-workspace <request>` in Codex.
 
 ## Safety
 
@@ -112,5 +117,8 @@ less/
   skills/less-workspace/
     SKILL.md                        Triggers, workflows, rules
     references/                     analysis, pipelines, operations
+  skills/less-python-sdk/
+    SKILL.md                        Triggers, workflow, rules
+    references/                     variables, tables, runtime
 ```
 

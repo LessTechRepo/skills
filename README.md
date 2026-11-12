@@ -56,7 +56,16 @@ https://app.less.tech/api/mcp
 
 See the [Less documentation](https://docs.less.tech) for more about the platform and its [Terms of Use](https://www.less.tech/terms-of-use).
 
-Every call runs as the signed-in user and is subject to that user's workspace permissions. Tools only see assets the user may read, and `executeAsset` only runs assets the user may execute. Authentication is handled by your client's MCP connection; this repository does not contain or issue tokens.
+Authentication is OAuth 2.1. On first use your client opens a browser window to Less, where you sign in, tick the workspaces the agent may use, pick a default, and click **Allow access**. No API keys go in the MCP config, and this repository does not contain or issue tokens.
+
+Every call runs as you in the currently active workspace and is subject to your permissions there. Tools only see assets you may read, `executeAsset` only runs assets you may execute, and the agent cannot switch to a workspace you did not authorize.
+
+### Multiple workspaces
+
+- **One connector, many workspaces (default).** The bundled URL serves every workspace you authorize. The agent uses `listWorkspaces` and `switchWorkspace` to move between them, and tells you when it switches.
+- **One connector per workspace.** Pin a connector to a workspace with `https://app.less.tech/api/mcp/<workspace-id-or-name>`, using the workspace UUID or a slug of its name (lowercase, spaces become `-`). Put it in `less/.mcp.json` or `less/mcp_config.json`. `switchWorkspace` is rejected on a pinned connector.
+
+If a workspace is missing, re-authorize and tick it on the consent screen, or add a pinned connector for it.
 
 ## Usage
 
@@ -94,7 +103,7 @@ Invoke a skill explicitly with `/less:less-workspace <request>` in Claude Code, 
 
 ## Safety
 
-The MCP is read-mostly. `executeAsset` is the only tool that changes anything: it starts a job. The skill only calls it when you explicitly ask to run, refresh, or re-execute an asset, and only after checking `canExecute` (and `hasPublishedVersion` for models).
+The MCP is read-mostly. Two tools change state: `executeAsset` starts a job, and `switchWorkspace` changes the active workspace for later calls (it cannot reach workspaces you did not authorize). The skill only calls `executeAsset` when you explicitly ask to run, refresh, or re-execute an asset, and only after checking `canExecute` (and `hasPublishedVersion` for models). It only switches workspaces on your explicit intent or clear necessity.
 
 These skills do not bypass Less authentication, authorization, or permission checks.
 

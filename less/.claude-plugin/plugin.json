@@ -1,7 +1,7 @@
 {
   "name": "less",
   "description": "Explore your Less workspace, answer data questions, trace lineage, diagnose or refresh pipelines, and write custom Python scripts.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Less",
     "url": "https://www.less.tech/"

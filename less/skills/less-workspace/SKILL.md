@@ -1,11 +1,11 @@
 ---
 name: less-workspace
-description: "Explore and operate a Less data workspace through the Less MCP server. Use to find sources, models, tables, orchestrations, and destinations; answer data questions with aggregate SQL over verified tables; understand how something is built (lineage, model pipelines, where a metric is computed) and what it affects; check pipeline health, diagnose failed jobs from logs, review schedules; and, only when explicitly asked, run or refresh an asset."
+description: "Explore and operate a Less data workspace through the Less MCP server, including switching between authorized workspaces. Use to find sources, models, tables, orchestrations, and destinations; answer data questions with aggregate SQL over verified tables; understand how something is built (lineage, model pipelines, where a metric is computed) and what it affects; check pipeline health, diagnose failed jobs from logs, review schedules; and, only when explicitly asked, run or refresh an asset."
 ---
 
 # Less Workspace
 
-Use the Less MCP tools to explore a user's workspace, answer data questions, inspect pipelines, and check job health. Every call runs as the signed-in user and is limited to what they may read or execute.
+Use the Less MCP tools to explore a user's workspace, answer data questions, inspect pipelines, and check job health. Every call runs as the signed-in user, in the currently active workspace, and is limited to what they may read or execute.
 
 Assume the `less` MCP connection is already configured by the client. Use the exact tool names the client exposes; prefixes may vary. Do not copy tool schemas from memory — rely on the tools' advertised descriptions.
 
@@ -17,9 +17,20 @@ Assume the `less` MCP connection is already configured by the client. Use the ex
 - **Permissions are real.** `Unauthorized`, "not found", or empty results can mean the user lacks access. Report that plainly; do not retry blindly or work around it.
 - **Surface links.** Include the in-app links tool results return so the user can open the asset, run, or log. Never fabricate links.
 - **Do not fabricate.** Report only what tool results show. Say so when data is missing.
-- **Mutation safety.** `executeAsset` is the only tool that changes anything. See [Running assets](#running-assets).
+- **Mutation safety.** `executeAsset` starts jobs and `switchWorkspace` changes the active workspace for later calls. Nothing else changes anything. See [Running assets](#running-assets) and [Workspaces](#workspaces).
 
 
+
+## Workspaces
+
+The user may have authorized several workspaces, and the active one may not be the one they mean.
+
+- **Check before concluding.** Call `listWorkspaces` when the user names another workspace, or when results are empty or "not found" in a way that suggests the wrong workspace.
+- **Switch only deliberately.** Call `switchWorkspace` only on explicit user intent or clear necessity, and tell the user when you switch. The choice persists for later calls.
+- **Resolve, don't guess.** Take workspace ids from `listWorkspaces`; never invent them.
+- **Never switch to work around a permission error.**
+- **Pinned connectors.** If `listWorkspaces` reports `pinnedToUrlWorkspace: true`, or `switchWorkspace` errors that the connector is pinned, tell the user. They need the root MCP URL or a separate connector for the other workspace. Do not retry.
+- **Workspace not listed.** The user chose the visible workspaces on the consent screen. They must re-authorize and tick it, or add a connector pinned to it. You cannot fix this.
 
 ## Choose a Workflow
 
@@ -73,6 +84,6 @@ After running, follow the returned `jobId` (with the same `assetId`) via `detail
 ## Out of Scope
 
 - Creating, editing, or deleting assets: the MCP is read-mostly and only runs existing assets.
-- Obtaining or storing tokens: authentication is handled by the client's MCP connection.
+- Obtaining or storing tokens: authentication is handled by the client's MCP connection (OAuth sign-in in the browser). The consent screen controls which workspaces are visible; see [Workspaces](#workspaces).
 - Assumptions about a specific workspace's data: always discover it via the tools.
 

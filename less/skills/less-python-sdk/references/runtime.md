@@ -7,7 +7,7 @@ Use this for local setup, available libraries, logging, and the limits a script 
 **Prefer environment variables.** Set these three values in the shell, and leave them out of the script. The SDK reads them when `less` is imported, so the same file then runs unchanged in both places, with nothing to strip and no token to leak.
 
 ```bash
-export LESS_API_URL="https://<host>/api"
+export LESS_API_URL="https://app.less.tech/api"
 export LESS_API_TOKEN="<script-api-token>"
 export LESS_ASSET_ID="<python-asset-id>"
 ```
@@ -20,7 +20,7 @@ The Local SDK setup modal generates this block instead:
 # LOCAL ONLY — the os.environ block below is for running on your machine.
 import os
 
-os.environ["LESS_API_URL"] = "https://<host>/api"
+os.environ["LESS_API_URL"] = "https://app.less.tech/api"
 os.environ["LESS_API_TOKEN"] = "<script-api-token>"
 os.environ["LESS_ASSET_ID"] = "<python-asset-id>"
 
